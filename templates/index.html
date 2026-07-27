@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-Chat | AI Assistant</title>
+    <meta name="description" content="B-Chat - Premium AI Assistant">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="gradient"></div>
+        <div class="particles" id="particles"></div>
+        <div class="mouse-glow" id="mouseGlow"></div>
+    </div>
+
+    <!-- WELCOME SCREEN -->
+    <section id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-card">
+            <div class="logo-wrapper">
+                <div class="logo-circle">
+                    <span>B</span>
+                </div>
+                <h1>B-<span>Chat</span></h1>
+            </div>
+            <h2>Welcome</h2>
+            <p>What should I call you?</p>
+            <div class="input-group">
+                <input id="usernameInput" type="text" maxlength="25" autocomplete="off" placeholder="Enter your name">
+            </div>
+            <button id="continueBtn" class="continue-btn" type="button">
+                Continue <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- MAIN APPLICATION -->
+    <div id="app" class="app hidden">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <div class="brand-logo">B</div>
+                    <div>
+                        <h2>B-Chat</h2>
+                        <span>Premium AI Assistant</span>
+                    </div>
+                </div>
+
+                <button id="newChatBtn" class="new-chat-btn" type="button">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New Chat</span>
+                </button>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="searchChats" type="text" placeholder="Search conversations">
+                </div>
+            </div>
+
+            <div class="chat-history" id="chatHistory"></div>
+
+            <div class="sidebar-bottom">
+                <button class="sidebar-btn" id="settingsBtn" type="button">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </button>
+                <button class="sidebar-btn" id="changeNameBtn" type="button">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Change Name</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <header class="topbar">
+                <div class="top-left">
+                    <h1>Welcome, <span id="displayName">User</span></h1>
+                    <p>How can I help you today?</p>
+                </div>
+                <div class="top-right">
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        AI Online
+                    </div>
+                </div>
+            </header>
+
+            <!-- CHAT AREA -->
+            <section class="chat-area" id="chatArea">
+                <div class="messages" id="messages"></div>
+
+                <div id="typingIndicator" class="typing hidden">
+                    <div class="typing-avatar">B</div>
+                    <div class="typing-bubble">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MESSAGE COMPOSER -->
+            <form id="chatForm" class="composer">
+                <div class="composer-box">
+                    <button type="button" class="icon-btn" id="attachBtn" title="Attach file">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+
+                    <textarea id="messageInput" rows="1" maxlength="5000" placeholder="Message B-Chat..."></textarea>
+
+                    <button type="button" class="icon-btn" id="voiceBtn" title="Use Microphone">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+
+                    <button id="sendBtn" class="send-btn" type="submit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+                <p class="composer-note">
+                    B-Chat can make mistakes. Always verify important information.
+                </p>
+            </form>
+        </main>
+    </div>
+
+    <!-- LIBRARIES -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/lib/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github-dark.min.css">
+
+    <!-- YOUR JAVASCRIPT -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

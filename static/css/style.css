@@ -1,0 +1,986 @@
+/*=====================================================
+    B-CHAT V4
+    Premium Black & Gold Theme
+    Bukhari Studios
+=====================================================*/
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/*=====================================================
+RESET
+=====================================================*/
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:#070707;
+    color:#ffffff;
+    overflow:hidden;
+    height:100vh;
+    -webkit-font-smoothing:antialiased;
+}
+
+/*=====================================================
+SCROLLBAR
+=====================================================*/
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#c79a2b;
+    border-radius:50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#f0c44d;
+}
+
+/*=====================================================
+COLORS
+=====================================================*/
+
+:root{
+--bg:#080808;
+--panel:#111111;
+--panel2:#171717;
+--glass:rgba(255,255,255,.04);
+--gold:#d4af37;
+--gold2:#f2cb55;
+--gold3:#9b7420;
+--text:#ffffff;
+--muted:#a8a8a8;
+--border:rgba(255,255,255,.08);
+--shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/*=====================================================
+BACKGROUND
+=====================================================*/
+
+.background{
+position:fixed;
+inset:0;
+overflow:hidden;
+z-index:-5;
+background:
+radial-gradient(circle at top left,#292009 0%,transparent 45%),
+radial-gradient(circle at bottom right,#2d1d00 0%,transparent 45%),
+linear-gradient(180deg,#050505,#0c0c0c);
+}
+
+/*=====================================================
+ANIMATED GRADIENT
+=====================================================*/
+
+.gradient{
+position:absolute;
+width:1400px;
+height:1400px;
+border-radius:50%;
+background:
+radial-gradient(circle,
+rgba(212,175,55,.22),
+transparent 70%);
+filter:blur(80px);
+animation:floatGradient 16s ease-in-out infinite;
+opacity:.8;
+left:-300px;
+top:-300px;
+}
+
+@keyframes floatGradient{
+0%{
+transform:translate(0,0);
+}
+50%{
+transform:translate(250px,180px);
+}
+100%{
+transform:translate(0,0);
+}
+}
+
+/*=====================================================
+MOUSE GLOW
+=====================================================*/
+
+.mouse-glow{
+position:fixed;
+width:420px;
+height:420px;
+border-radius:50%;
+pointer-events:none;
+background:
+radial-gradient(circle,
+rgba(212,175,55,.15),
+transparent 70%);
+filter:blur(70px);
+transform:translate(-50%,-50%);
+z-index:-2;
+transition:
+left .08s linear,
+top .08s linear;
+}
+
+/*=====================================================
+FLOATING PARTICLES
+=====================================================*/
+
+.particles{
+position:absolute;
+inset:0;
+overflow:hidden;
+}
+
+.particles span{
+position:absolute;
+display:block;
+width:4px;
+height:4px;
+background:#d4af37;
+border-radius:50%;
+opacity:.3;
+animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+0%{
+transform:
+translateY(120vh)
+scale(.2);
+opacity:0;
+}
+20%{
+opacity:.5;
+}
+80%{
+opacity:.5;
+}
+100%{
+transform:
+translateY(-120vh)
+scale(1);
+opacity:0;
+}
+}
+
+/*=====================================================
+APP LAYOUT
+=====================================================*/
+
+.app{
+display:flex;
+height:100vh;
+width:100%;
+}
+
+.hidden{
+display:none !important;
+}
+
+/*=====================================================
+SIDEBAR
+=====================================================*/
+
+.sidebar{
+    width:320px;
+    height:100vh;
+    background:rgba(17,17,17,.72);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    border-right:1px solid rgba(212,175,55,.12);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:26px;
+    box-shadow:15px 0 45px rgba(0,0,0,.35);
+    z-index:5;
+}
+
+/*=====================================================
+BRAND
+=====================================================*/
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:28px;
+}
+
+.brand-logo{
+    width:62px;
+    height:62px;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:800;
+    color:white;
+    background:linear-gradient(135deg,#e3c05b,#9b7420);
+    box-shadow:0 0 25px rgba(212,175,55,.35);
+    transition:.35s;
+}
+
+.brand-logo:hover{
+    transform:rotate(-6deg) scale(1.08);
+    box-shadow:0 0 45px rgba(212,175,55,.65);
+}
+
+.brand h2{
+    font-size:23px;
+    font-weight:700;
+    letter-spacing:.4px;
+}
+
+.brand span{
+    color:#9f9f9f;
+    font-size:13px;
+}
+
+/*=====================================================
+NEW CHAT
+=====================================================*/
+
+.new-chat-btn{
+    width:100%;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    padding:16px;
+    border-radius:18px;
+    margin-bottom:22px;
+    background:linear-gradient(135deg,#d4af37,#9b7420);
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    transition:.3s;
+    box-shadow:0 12px 30px rgba(212,175,55,.22);
+}
+
+.new-chat-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 45px rgba(212,175,55,.38);
+}
+
+/*=====================================================
+SEARCH
+=====================================================*/
+
+.search-box{
+    position:relative;
+    margin-bottom:28px;
+}
+
+.search-box i{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#9b9b9b;
+}
+
+.search-box input{
+    width:100%;
+    background:#171717;
+    border:1px solid rgba(255,255,255,.08);
+    color:white;
+    border-radius:16px;
+    padding:15px 20px 15px 48px;
+    font-size:14px;
+    transition:.3s;
+}
+
+.search-box input::placeholder{
+    color:#888;
+}
+
+.search-box input:focus{
+    outline:none;
+    border-color:#d4af37;
+    box-shadow:0 0 18px rgba(212,175,55,.25);
+}
+
+/*=====================================================
+CHAT HISTORY
+=====================================================*/
+
+.chat-history{
+    flex:1;
+    overflow-y:auto;
+    padding-right:6px;
+}
+
+.chat-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    margin-bottom:10px;
+    border-radius:16px;
+    cursor:pointer;
+    color:#ddd;
+    transition:.3s;
+    background:transparent;
+}
+
+.chat-item:hover{
+    background:rgba(212,175,55,.08);
+    transform:translateX(5px);
+}
+
+.chat-item.active{
+    background:rgba(212,175,55,.12);
+    border:1px solid rgba(212,175,55,.25);
+}
+
+.chat-item i{
+    color:#d4af37;
+}
+
+/*=====================================================
+BOTTOM BUTTONS
+=====================================================*/
+
+.sidebar-bottom{
+    margin-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.sidebar-btn{
+    background:#171717;
+    border:1px solid rgba(255,255,255,.08);
+    color:white;
+    padding:15px;
+    border-radius:16px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:14px;
+    transition:.3s;
+}
+
+.sidebar-btn:hover{
+    background:rgba(212,175,55,.08);
+    border-color:#d4af37;
+    transform:translateX(5px);
+}
+
+.sidebar-btn i{
+    color:#d4af37;
+    width:20px;
+}
+
+/*=====================================================
+MAIN AREA
+=====================================================*/
+
+.main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+}
+
+/*=====================================================
+TOPBAR
+=====================================================*/
+
+.topbar{
+    height:85px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+    backdrop-filter:blur(20px);
+    background:rgba(12,12,12,.72);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.topbar-left{
+    display:flex;
+    flex-direction:column;
+}
+
+.topbar-left h2{
+    font-size:28px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.topbar-left p{
+    margin-top:4px;
+    color:#9a9a9a;
+    font-size:14px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#9e9e9e;
+    font-size:14px;
+}
+
+.status-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#00ff88;
+    box-shadow:0 0 12px #00ff88;
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+0%{
+transform:scale(.8);
+opacity:.4;
+}
+50%{
+transform:scale(1.25);
+opacity:1;
+}
+100%{
+transform:scale(.8);
+opacity:.4;
+}
+}
+
+/*=====================================================
+CHAT AREA
+=====================================================*/
+
+.chat-area{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    position:relative;
+}
+
+/*=====================================================
+MESSAGES
+=====================================================*/
+
+.messages{
+    flex:1;
+    overflow-y:auto;
+    padding:45px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    scroll-behavior:smooth;
+}
+
+/*=====================================================
+MESSAGE ROW
+=====================================================*/
+
+.message{
+    display:flex;
+    width:100%;
+    animation:fadeUp .35s ease;
+}
+
+.message.user{
+    justify-content:flex-end;
+}
+
+.message.ai{
+    justify-content:flex-start;
+}
+
+/*=====================================================
+BUBBLES (Made Smaller & Clean)
+=====================================================*/
+
+.bubble{
+    max-width:720px;
+    padding:14px 18px;
+    border-radius:18px;
+    line-height:1.6;
+    font-size:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+/*=====================================================
+AI
+=====================================================*/
+
+.ai .bubble{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/*=====================================================
+USER
+=====================================================*/
+
+.user .bubble{
+    color:white;
+    background:linear-gradient(135deg,#d4af37,#9b7420);
+}
+
+/*=====================================================
+AVATAR
+=====================================================*/
+
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+    font-size:14px;
+    margin-right:12px;
+    flex-shrink:0;
+}
+
+.ai .avatar{
+    background:linear-gradient(135deg,#d4af37,#9b7420);
+    box-shadow:0 0 25px rgba(212,175,55,.35);
+}
+
+/*=====================================================
+ANIMATION
+=====================================================*/
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/*=====================================================
+COMPOSER / CHATBOX (Made Smaller)
+=====================================================*/
+
+.composer{
+    flex-shrink:0;
+    padding:16px 25px 20px;
+    background:rgba(10,10,10,.75);
+    backdrop-filter:blur(22px);
+    border-top:1px solid rgba(255,255,255,.06);
+    z-index:10;
+}
+
+.composer-box{
+    display:flex;
+    align-items:flex-end;
+    gap:12px;
+    max-width:800px;
+    margin:0 auto;
+    padding:8px 14px;
+    border-radius:22px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    transition:.35s;
+}
+
+.composer-box:focus-within{
+    border-color:rgba(212,175,55,.55);
+    box-shadow:0 0 25px rgba(212,175,55,.20);
+}
+
+/*=====================================================
+TEXTAREA
+=====================================================*/
+
+.composer textarea{
+    flex:1;
+    resize:none;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-size:14px;
+    line-height:1.6;
+    font-family:inherit;
+    min-height:24px;
+    max-height:120px;
+    overflow-y:auto;
+    padding:6px 0;
+}
+
+.composer textarea::placeholder{
+    color:#888;
+}
+
+/*=====================================================
+ICON BUTTONS
+=====================================================*/
+
+.icon-btn{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#181818;
+    color:#d4af37;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.3s;
+    font-size:15px;
+}
+
+.icon-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:#222;
+    box-shadow:0 0 18px rgba(212,175,55,.25);
+}
+
+/* Recording active state for microphone */
+.icon-btn.recording {
+    background: #ff4d4d !important;
+    color: white !important;
+    animation: pulse 1.2s infinite;
+}
+
+/*=====================================================
+SEND BUTTON
+=====================================================*/
+
+.send-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    color:white;
+    font-size:16px;
+    background:linear-gradient(135deg,#f2cb55,#b8860b);
+    transition:.35s;
+    box-shadow:0 8px 20px rgba(212,175,55,.3);
+}
+
+.send-btn:hover{
+    transform:translateY(-4px) scale(1.08);
+    box-shadow:0 18px 45px rgba(212,175,55,.45);
+}
+
+.send-btn:active{
+    transform:scale(.96);
+}
+
+/*=====================================================
+COMPOSER NOTE (Moved below the chat box)
+=====================================================*/
+
+.composer-note{
+    text-align:center;
+    color:#888;
+    font-size:12px;
+    margin-top:10px;
+}
+
+/*=====================================================
+TYPING INDICATOR
+=====================================================*/
+
+.typing{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:16px 22px;
+    width:max-content;
+    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(16px);
+}
+
+.typing span{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#d4af37;
+    animation:typingBounce 1.2s infinite;
+}
+
+.typing span:nth-child(2){
+    animation-delay:.2s;
+}
+
+.typing span:nth-child(3){
+    animation-delay:.4s;
+}
+
+@keyframes typingBounce{
+0%,80%,100%{
+transform:translateY(0);
+opacity:.4;
+}
+40%{
+transform:translateY(-7px);
+opacity:1;
+}
+}
+
+/*=====================================================
+WELCOME SCREEN
+=====================================================*/
+
+.welcome-screen{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle at top,#1d1605,#080808);
+    z-index:999;
+}
+
+.welcome-card{
+    width:520px;
+    padding:55px;
+    border-radius:30px;
+    text-align:center;
+    background:rgba(20,20,20,.70);
+    backdrop-filter:blur(30px);
+    border:1px solid rgba(212,175,55,.12);
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+
+.welcome-card h1{
+    font-size:42px;
+    margin-top:18px;
+    margin-bottom:10px;
+}
+
+.welcome-card p{
+    color:#999;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.welcome-card input{
+    width:100%;
+    padding:18px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#141414;
+    color:white;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.welcome-card input:focus{
+    border-color:#d4af37;
+    box-shadow:0 0 18px rgba(212,175,55,.20);
+}
+
+.continue-btn{
+    width:100%;
+    margin-top:22px;
+    padding:18px;
+    border:none;
+    border-radius:18px;
+    cursor:pointer;
+    color:white;
+    font-weight:700;
+    font-size:16px;
+    background:linear-gradient(135deg,#f2cb55,#b8860b);
+    transition:.35s;
+}
+
+.continue-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(212,175,55,.35);
+}
+
+/*=====================================================
+MARKDOWN
+=====================================================*/
+
+.bubble h1,
+.bubble h2,
+.bubble h3{
+    margin:20px 0 12px;
+    color:var(--gold2);
+    font-weight:700;
+}
+
+.bubble p{
+    margin:12px 0;
+    line-height:1.9;
+}
+
+.bubble ul,
+.bubble ol{
+    padding-left:28px;
+    margin:15px 0;
+}
+
+.bubble li{
+    margin:8px 0;
+}
+
+.bubble a{
+    color:#61dafb;
+    text-decoration:none;
+}
+
+.bubble a:hover{
+    text-decoration:underline;
+}
+
+.bubble blockquote{
+    margin:18px 0;
+    padding:16px 22px;
+    border-left:4px solid var(--gold);
+    background:rgba(255,255,255,.04);
+    border-radius:12px;
+    color:#ddd;
+}
+
+/*=====================================================
+CODE BLOCKS
+=====================================================*/
+
+.bubble pre{
+    overflow:auto;
+    margin:20px 0;
+    padding:20px;
+    border-radius:18px;
+    background:#0d0d0d;
+    border:1px solid rgba(212,175,55,.12);
+}
+
+.bubble code{
+    font-family:Consolas, monospace;
+    font-size:14px;
+    color:#ffd95a;
+}
+
+.bubble pre code{
+    color:#f3f3f3;
+}
+
+/*=====================================================
+TABLES
+=====================================================*/
+
+.bubble table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.bubble th{
+    background:#1d1d1d;
+    color:var(--gold);
+}
+
+.bubble td,
+.bubble th{
+    padding:14px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/*=====================================================
+INPUT SELECTION
+=====================================================*/
+
+::selection{
+    background:#d4af37;
+    color:#000;
+}
+
+/*=====================================================
+RESPONSIVE
+=====================================================*/
+
+@media(max-width:1200px){
+.sidebar{
+width:280px;
+}
+}
+
+@media(max-width:900px){
+.sidebar{
+position:fixed;
+left:-100%;
+transition:.35s;
+height:100%;
+z-index:999;
+}
+.sidebar.open{
+left:0;
+}
+.messages{
+padding:25px;
+}
+.topbar{
+padding:0 20px;
+}
+}
+
+@media(max-width:600px){
+.welcome-card{
+width:94%;
+padding:35px;
+}
+.messages{
+padding:18px;
+}
+.bubble{
+max-width:100%;
+font-size:14px;
+padding:14px;
+}
+.composer{
+padding:14px;
+}
+.topbar-left h2{
+font-size:22px;
+}
+}
+
+/*=====================================================
+SMOOTH TRANSITIONS
+=====================================================*/
+
+*{
+transition:background .25s, border-color .25s, box-shadow .25s, color .25s;
+}
